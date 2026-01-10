@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Your Cart</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>Your Cart</h2>
+
+<div id="cart"></div>
+<h3 id="total"></h3>
+
+<button onclick="placeOrder()">Place Order</button>
+<a href="index.html">⬅ Back to Products</a>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let cartDiv = document.getElementById("cart");
+
+function renderCart() {
+  cartDiv.innerHTML = "";
+  let total = 0;
+
+  cart.forEach((p, index) => {
+    let price = p.price * p.quantity;
+    total += price;
+
+    cartDiv.innerHTML += `
+      <div class="cart-item">
+        <p>
+          ${p.name} × ${p.quantity} = ₹${price}
+        </p>
+        <button onclick="removeItem(${index})">❌ Remove</button>
+      </div>
+    `;
+  });
+
+  document.getElementById("total").innerText =
+    "Total: ₹" + total;
+}
+
+function removeItem(index) {
+  cart.splice(index, 1);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCart();
+}
+
+function placeOrder() {
+  if (cart.length === 0) {
+    alert("Cart is empty");
+    return;
+  }
+
+  fetch("http://localhost:5000/api/orders", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      userId: JSON.parse(localStorage.getItem("user"))?.username || "guest",
+      products: cart,
+      total: cart.reduce((s, p) => s + p.price * p.quantity, 0)
+    })
+  }).then(() => {
+    alert("Order placed successfully 🎉");
+    localStorage.removeItem("cart");
+    window.location.href = "index.html";
+  });
+}
+
+renderCart();
+</script>
+
+</body>
+</html>
