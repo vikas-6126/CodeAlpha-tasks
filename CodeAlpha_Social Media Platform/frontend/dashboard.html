@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  
+
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- USER INFO -->
+  <h2 id="userInfo"></h2>
+  <button onclick="logout()">Logout</button>
+
+  <hr>
+
+  <!-- CREATE POST -->
+  <h3>Create Post</h3>
+  <textarea
+    id="content"
+    placeholder="What's on your mind?"
+    rows="4"
+    cols="50">
+  </textarea>
+  <br><br>
+  <button onclick="createPost()">Post</button>
+<hr />
+
+<h2>Discover Users</h2>
+<div id="users"></div>
+
+<hr />
+
+
+  <hr>
+  
+
+<h3>Users</h3>
+<div id="users"></div>
+
+
+  <!-- POSTS FEED -->
+  <h3>All Posts</h3>
+  <div id="posts"></div>
+
+  <!-- JS -->
+  <script src="dashboard.js"></script>
+</body>
+</html>

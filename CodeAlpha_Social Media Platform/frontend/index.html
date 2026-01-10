@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mini Social Media App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+    }
+    h2 {
+      color: #333;
+    }
+    .box {
+      background: white;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+    }
+    input, textarea, button {
+      width: 100%;
+      padding: 8px;
+      margin-top: 8px;
+    }
+    button {
+      background: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    pre {
+      background: #eee;
+      padding: 10px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Mini Social Media App</h1>
+
+  <!-- CREATE USER -->
+  <div class="box">
+    <h2>Create User</h2>
+    <input type="text" id="username" placeholder="Enter username">
+    <input type="email" id="email" placeholder="Enter email">
+    <button onclick="createUser()">Create User</button>
+    <pre id="userResult"></pre>
+  </div>
+
+  <!-- CREATE POST -->
+  <div class="box">
+    <h2>Create Post</h2>
+    <textarea id="postContent" placeholder="Enter post content"></textarea>
+    <input type="text" id="postUserId" placeholder="Paste User ID here">
+    <button onclick="createPost()">Create Post</button>
+    <pre id="postResult"></pre>
+  </div>
+
+  <!-- ALL POSTS -->
+  <div class="box">
+    <h2>All Posts</h2>
+    <button onclick="getPosts()">Refresh Posts</button>
+    <div id="posts"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
