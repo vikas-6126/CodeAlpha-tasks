@@ -48,8 +48,7 @@ CodeAlpha_Simple_Ecommerce_Store
 │ └── script.js
 └── README.md
 
-yaml
-Copy code
+
 
 ---
 
@@ -71,7 +70,7 @@ Make sure the following are installed on your system:
 
 ### Step 3: Clone the Repository
 
-git clone https://github.com/your-username/CodeAlpha_Simple_Ecommerce_Store.git
+git clone https://github.com/Vikas-6126/CodeAlpha_Simple_Ecommerce_Store.git
 
 
 cd CodeAlpha_Simple_Ecommerce_Store
